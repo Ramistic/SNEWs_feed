@@ -1,0 +1,394 @@
+<html>
+<head>
+  <title>NEWS</title>
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../stylesheets/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<!-- NAVBAR + TITLE -->
+<nav id="header">
+  <header class="container">
+      <div class="row">
+        <nav class="col-sm-10 text-left">
+          <a id="title" href="http://localhost:3000/"><font size="6px">SNEWS</font></a>
+          <p>      </p>
+          <div class="tabs">
+            <button id="NavTab1" class="tablinks"><font size="2ems">UK</font></button><span style="display:inline-block; width: 20px;"></span>
+            <button id="NavTab2" class="tablinks"><font size="2ems">US</font></button><span style="display:inline-block; width: 20px;"></span>
+            <button id="NavTab3" class="tablinks"><font size="2ems">EU</font></button>
+        </nav>
+        <nav class="col-sm-2" style="navlinks">
+          <button id="signinBTN" onclick="document.getElementById('id01').style.display='block'"><font size="1.5px">Sign up </font></button>
+          <button id="loginBTN" onclick="document.getElementById('id02').style.display='block'"><font size="1.5px">Login</font></button>
+          <input id="searchbar" type="text" placeholder="Enter search term..."></input>
+        </nav>
+      </div>
+  </header>
+</nav>
+
+<!-- This is the registration part of the page -->
+<!-- The Modal (contains the Sign Up form) -->
+<div id="id01" class="modal">
+  <form class="modal-content animate" method='POST'>
+    <div id="container1" class="container">
+      <button id="cross" type="button" onclick="document.getElementById('id01').style.display='none'">&#10006;</button>
+      <p><font size="2px">Register with </font><font id="text1" size="3px">SNEWS</font></p></br>
+      <label><b>Email</b></label></br>
+      <input id="input1" type="text" placeholder="Enter Email" name="email" required></br>
+      <label><b>Password</b></label></br>
+      <input id="input2" type="text" placeholder="Enter Password" name="psw" required></br>
+      <label><b>Repeat Password</b></label></br>
+      <input id="input3" type="text" placeholder="Repeat Password" name="psw-repeat" required></br>
+      <input type="checkbox" checked="checked"> Remember me
+      <div class="clearfix">
+        <button id="submit" type="submit"><font size="2px"> Sign Up </font></button>
+      </div>
+      <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+    </hr>
+    <!-- button below changes over to the login screen -->
+    <p> Already a registered member? <button id="login" type="login" onclick="document.getElementById('id01').style.display='none'; document.getElementById('id02').style.display='block'">Log in!</button></p>
+    </div>
+  </form>
+</div>
+<!-- this is going to be adapted to be the login popup -->
+<div id="id02" class="modal">
+  <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form id="poss" class="modal-content animate" method='POST'>
+    <div id="container1" class="container">
+      <button id="cross" type="button" onclick="document.getElementById('id02').style.display='none'">&#10006;</button>
+      <p><font size="2px">Login with </font><font id="text1" size="3px">SNEWS</font></p></br>
+      <label><b>Email</b></label></br>
+      <input id="input4" type="text" placeholder="Enter Email" name="email" required></br>
+      <label><b>Password</b></label></br>
+      <input id="input5" type="password" placeholder="Enter Password" name="psw" required></br>
+      <input type="checkbox" checked="checked"> Remember me
+      <div class="clearfix">
+        <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+        <button type="submit" class="signupbtn">Log in!</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- Site starts here -->
+</br>
+<div style="height: auto; width: 75%; display: inline-block;">
+<div style="display: inline-block;" class="card" id="card">
+
+</div>
+<button class="more">Load more.... </button>
+
+</div>
+<div id="basic">
+  <div class="tab">
+    <button style="width: 100%;" class="tablinks" onclick="click('Latest_News')"><font size="3em">Latest News</font></button>
+  </div>
+  <!-- Tab content -->
+  <div id="Latest" class="tabcontent" >
+  </br>
+  </div>
+  <div id="Trending" class="tabcontent" style="width: 100%; display: inline-block; display: none;">
+  </div>
+</div>
+</br></br></br></br></br></br></br>
+
+<h2> Comments </h2>
+<div class="container" id="comment">
+  <form class="COMMENTINPUT" id="comment" method="POST" action="/comment" style="width: 650; display: inline-block">
+    <label></label><input id="name" name="name" type="textarea" placeholder="Name"/></br>
+    <label></label><input id="comment" name="comment" type="textarea" placeholder="Add a comment here..."/></br>
+  </br><input value="Submit comment" type="submit"/>
+  </form>
+
+  <div class="commentview" style="height: 400; width: 600; display: inline-block; vertical-align: top; border: 1px solid black;">
+    <!-- HERE GO THE SUBMITTED COMMENTS -->
+  <div>
+</div>
+<!-- JAVASCRIPT BEGINS HERE -->
+<script>
+$('#article_bio_wrap').hide();
+$('#loginForm').hide();
+$('#hide_button').on('click', function() {
+  $('#loginForm').toggle();
+});
+
+//Expand list
+jQuery(document).ready(function($)
+{
+  $("#article_bio_wrap_toggle").click(function()
+  {
+    $("#article_bio_wrap").slideToggle( "slow");
+    if ($("#article_bio_wrap_toggle").text() == "Expand Article Details")
+      {
+        $("#article_bio_wrap_toggle").html("Hide Article Details")
+      }
+    else
+      {
+        $("#article_bio_wrap_toggle").text("Expand Article Details")
+      }
+  });
+});
+// Toggling of div
+$('body').on('click', '.toggle_btn', function() {
+  if ($(this).parent().find('.article_bio_wrap').css('display') == 'none') {
+    $(this).text('Minimise Article Details');
+    $(this).parent().find('.article_bio_wrap').css('display', 'inline');
+  } else {
+    $(this).parent().find('.article_bio_wrap').css('display', 'none');
+    $(this).text('Expand Article Details');
+    }
+});
+
+$('body').on('click', '.more', function(){
+  $.ajax("/sources", { method: "GET", success: function(data, text, error){
+    for (var i = 0; i < 20; i++){
+      var news = data.articles[i];
+      var title = news.title;
+      var publisher = news.source.id;
+      if (news.publishedAt == undefined){
+        news.publishedAt = "TunknownZ";
+      }
+      var published = news.publishedAt;
+      var formattedTime = published.split("T");
+      if (news.publishedAt == undefined){
+        news.publishedAt = "unknown";
+      }else{ var formattedTime = news.publishedAt.split("T"); }
+      var Time = formattedTime[0];
+      var Date = formattedTime[1].split("Z");
+      var desc = news.description;
+      var url = news.url;
+      var urlP = news.urlToImage;
+      var formattedTime = published.split("T");
+      // //creating shortcuts to attributes of array
+      var newsStory = $("<div class='card' style='width: 24%; min-height: 320; height: auto; display: inline-block; margin: 2.5; padding: 2.5'>");
+      newsStory.append($("<h4 class='card-title'>").html(news.title));
+      // newsStory.appentTo('#latestnews');
+      newsStory.append($("<small class='grayout'></small>").html(Date[0] + '    ' + Time));
+      newsStory.append($('<img class="card-img-top" style="height: 150; width: 99%;" src="'+ news.urlToImage +'">'));
+      newsStory.append($("<small class='grayout'></small>").html(publisher + " ( By " + news.author + ") "));
+      newsStory.append("<div class= 'card-block'");
+      // newsStory.append($('<div class="container">'));
+      newsStory.append('<div class="article_bio_toggle_wrapper"');
+      newsStory.append($('<a href="#0" class="article_bio_wrap_toggle toggle_btn" style="vertical-align: top; border-radius: 25px; margin-top: 10px;">Expand Article Details</a>'));
+      newsStory.append('<div class="article_bio_wrap" style="display: none;">' + news.description + '</div>');
+      newsStory.append($("<p class='card-text'>"));
+      newsStory.appendTo('#card');
+      var container = $('<div id="card2" class="card">')
+      $('#Latest').append(container);
+      // $('#Latest').append(document.createElement('br'));
+      $(container).append(news.title);
+      $('#Latest').append(document.createElement('br'));
+    }}
+  });
+});
+
+$.ajax("http://localhost:3000/getcomments", { method: "GET", success: function(data, text, error){
+      var arr = [];
+      data = data[0];
+      for(var x in data){
+        arr.push(data[x]);
+      }
+      for (var i = 0; i < arr.length; i++){
+        console.log(arr[i]);
+        datas = arr[i];
+        console.log(datas);
+        $('.commentview').append($('<p>' + arr[i].name + ' says : ' + arr[i].comment + '</p>'));
+    }}
+});
+
+var myNavX1 = document.getElementById('NavTab1');
+myNavX1.onclick = function click(){
+  //emptying div
+  $('#card').html('');
+  $.ajax("/sources", { method: "GET", success: function(data, text, error){
+    for (var i = 0; i < 150; i++){
+      if (data.articles[i].source.id === "bbc-news" || data.articles[i].source.id === "bbc-sport" || data.articles[i].source.id === "business-insider-uk" || data.articles[i].source.id === "google-news-uk"|| data.articles[i].source.id === "new-scientist" && data.articles[i].source.id != undefined){
+        var news = data.articles[i];
+        var title = news.title;
+        var publisher = news.source.id;
+        if (news.publishedAt == undefined){
+          news.publishedAt = "TunknownZ";
+        }
+        var published = news.publishedAt;
+        var formattedTime = published.split("T");
+        if (news.publishedAt == undefined){
+          news.publishedAt = "unknown";
+        }else{ var formattedTime = news.publishedAt.split("T"); }
+        var Time = formattedTime[0];
+        var Date = formattedTime[1].split("Z");
+        var desc = news.description;
+        var url = news.url;
+        var urlP = news.urlToImage;
+        var formattedTime = published.split("T");
+        // //creating shortcuts to attributes of array
+        var newsStory = $("<div class='card' style='width: 24%; min-height: 320; height: auto; display: inline-block; margin: 2.5; padding: 2.5'>");
+        newsStory.append($("<h4 class='card-title'>").html(news.title));
+        newsStory.append($("<small class='grayout'></small>").html(Date[0] + '    ' + Time));
+        newsStory.append($('<img class="card-img-top" style="height: 150; width: 99%;" src="'+ news.urlToImage +'">'));
+        newsStory.append($("<small class='grayout'></small>").html(publisher + " ( By " + news.author + ") "));
+        newsStory.append("<div class= 'card-block'");
+        newsStory.append('<div class="article_bio_toggle_wrapper"');
+        newsStory.append($('<a href="#0" class="article_bio_wrap_toggle toggle_btn" style="vertical-align: top; border-radius: 25px; margin-top: 10px;">Expand Article Details</a>'));
+        newsStory.append('<div class="article_bio_wrap" style="display: none;">' + news.description + '</div>');
+        newsStory.append($("<p class='card-text'>"));
+        newsStory.appendTo('#card');
+      }else{
+        continue;
+      }
+    }
+  }});
+};
+
+var myNavX2 = document.getElementById('NavTab2');
+myNavX2.onclick = function click(){
+  //emptying div
+  $('#card').html('');
+  $.ajax("/sources", { method: "GET", success: function(data, text, error){
+    for (var i = 0; i < 150; i++){
+      if (data.articles[i].source.id === "bloomberg" || data.articles[i].source.id === "wired" || data.articles[i].source.id === "techcrunch" || data.articles[i].source.id === "reuters"|| data.articles[i].source.id === "ign" && data.articles[i].source.id != undefined){
+        var news = data.articles[i];
+        var title = news.title;
+        var publisher = news.source.id;
+        if (news.publishedAt == undefined){
+          news.publishedAt = "TunknownZ";
+        }
+        var published = news.publishedAt;
+        var formattedTime = published.split("T");
+        if (news.publishedAt == undefined){
+          news.publishedAt = "unknown";
+        }else{ var formattedTime = news.publishedAt.split("T"); }
+        var Time = formattedTime[0];
+        var Date = formattedTime[1].split("Z");
+        var desc = news.description;
+        var url = news.url;
+        var urlP = news.urlToImage;
+        var formattedTime = published.split("T");
+        // //creating shortcuts to attributes of array
+        var newsStory = $("<div class='card' style='width: 24%; min-height: 320; height: auto; display: inline-block; margin: 2.5; padding: 2.5'>");
+        newsStory.append($("<h4 class='card-title'>").html(news.title));
+        newsStory.append($("<small class='grayout'></small>").html(Date[0] + '    ' + Time));
+        newsStory.append($('<img class="card-img-top" style="height: 150; width: 99%;" src="'+ news.urlToImage +'">'));
+        newsStory.append($("<small class='grayout'></small>").html(publisher + " ( By " + news.author + ") "));
+        newsStory.append("<div class= 'card-block'");
+        newsStory.append('<div class="article_bio_toggle_wrapper"');
+        newsStory.append($('<a href="#0" class="article_bio_wrap_toggle toggle_btn" style="vertical-align: top; border-radius: 25px; margin-top: 10px;">Expand Article Details</a>'));
+        newsStory.append('<div class="article_bio_wrap" style="display: none;">' + news.description + '</div>');
+        newsStory.append($("<p class='card-text'>"));
+        newsStory.appendTo('#card');
+      }else{
+        continue;
+      }
+    }
+  }});
+};
+
+var myNavX3 = document.getElementById('NavTab3');
+myNavX3.onclick = function click(){
+  //emptying div
+  $('#card').html('');
+  $.ajax("/sources", { method: "GET", success: function(data, text, error){
+    for (var i = 0; i < 150; i++){
+      if (data.articles[i].source.id === "australian-financial-review" || data.articles[i].source.id === "business-insider" || data.articles[i].source.id === "vice-news" || data.articles[i].source.id === "google-news" && data.articles[i].source.id != undefined){
+        var news = data.articles[i];
+        var title = news.title;
+        var publisher = news.source.id;
+        if (news.publishedAt == undefined){
+          news.publishedAt = "TunknownZ";
+        }
+        var published = news.publishedAt;
+        var formattedTime = published.split("T");
+        if (news.publishedAt == undefined){
+          news.publishedAt = "unknown";
+        }else{ var formattedTime = news.publishedAt.split("T"); }
+        var Time = formattedTime[0];
+        var Date = formattedTime[1].split("Z");
+        var desc = news.description;
+        var url = news.url;
+        var urlP = news.urlToImage;
+        var formattedTime = published.split("T");
+        // //creating shortcuts to attributes of array
+        var newsStory = $("<div class='card' style='width: 24%; min-height: 320; height: auto; display: inline-block; margin: 2.5; padding: 2.5'>");
+        newsStory.append($("<h4 class='card-title'>").html(news.title));
+        newsStory.append($("<small class='grayout'></small>").html(Date[0] + '    ' + Time));
+        newsStory.append($('<img class="card-img-top" style="height: 150; width: 99%;" src="'+ news.urlToImage +'">'));
+        newsStory.append($("<small class='grayout'></small>").html(publisher + " ( By " + news.author + ") "));
+        newsStory.append("<div class= 'card-block'");
+        newsStory.append('<div class="article_bio_toggle_wrapper"');
+        newsStory.append($('<a href="#0" class="article_bio_wrap_toggle toggle_btn" style="vertical-align: top; border-radius: 25px; margin-top: 10px;">Expand Article Details</a>'));
+        newsStory.append('<div class="article_bio_wrap" style="display: none;">' + news.description + '</div>');
+        newsStory.append($("<p class='card-text'>"));
+        newsStory.appendTo('#card');
+      }else{
+        continue;
+      }
+    }
+  }});
+};
+$.ajax("/sources", { method: "GET", success: function(data, text, error){
+  for (var i = 0; i < 8; i++){
+    var news = data.articles[i];
+    var title = news.title;
+    var publisher = news.source.id;
+    if (news.publishedAt == undefined){
+      news.publishedAt = "TunknownZ";
+    }
+    var published = news.publishedAt;
+    var formattedTime = published.split("T");
+    if (news.publishedAt == undefined){
+      news.publishedAt = "unknown";
+    }else{ var formattedTime = news.publishedAt.split("T"); }
+    var Time = formattedTime[0];
+    var Date = formattedTime[1].split("Z");
+    var desc = news.description;
+    var url = news.url;
+    var urlP = news.urlToImage;
+    var formattedTime = published.split("T");
+    // //creating shortcuts to attributes of array
+    var newsStory = $("<div class='card' style='width: 24%; min-height: 320; height: auto; display: inline-block; margin: 2.5; padding: 2.5'>");
+    newsStory.append($("<h4 class='card-title'>").html(news.title));
+    // newsStory.appentTo('#latestnews');
+    newsStory.append($("<small class='grayout'></small>").html(Date[0] + '    ' + Time));
+    newsStory.append($('<img class="card-img-top" style="height: 150; width: 99%;" src="'+ news.urlToImage +'">'));
+    newsStory.append($("<small class='grayout'></small>").html(publisher + " ( By " + news.author + ") "));
+    newsStory.append("<div class= 'card-block'");
+    // newsStory.append($('<div class="container">'));
+    newsStory.append('<div class="article_bio_toggle_wrapper"');
+    newsStory.append($('<a href="#0" class="article_bio_wrap_toggle toggle_btn" style="vertical-align: top; border-radius: 25px; margin-top: 10px;">Expand Article Details</a>'));
+    newsStory.append('<div class="article_bio_wrap" style="display: none;">' + news.description + '</div>');
+    newsStory.append($("<p class='card-text'>"));
+    newsStory.appendTo('#card');
+    var container = $('<div id="card2" class="card">')
+    $('#Latest').append(container);
+    // $('#Latest').append(document.createElement('br'));
+    $(container).append(news.title);
+    $('#Latest').append(document.createElement('br'));
+  }}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
